@@ -1,0 +1,72 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 450,
+    "height": 450,
+    "title": "CO2 Emissions since 1950",
+    "data": {
+      "url": "data/world.csv"
+    },
+    "params": [
+        {
+            "name": "Year_selection",
+            "bind": {
+                "input": "range",
+                "min": 1950,
+                "max": 2018,
+                "step": 1,
+                "name": "Year: "
+            }
+        }
+    ],
+    "transform": [
+        {"filter": "datum.gdp > 0"},
+        {"filter": "datum.year == Year_selection"},
+        {
+            "calculate": "datum.gdp/1000000000",
+            "as": "gdp_billion"
+        }
+    ],
+    "encoding": {
+        "x": {
+            "field": "co2_per_capita",
+            "type": "quantitative",
+            "title": "CO2 per capita",
+            "scale": {
+                "domain": [0, 100]
+            }
+        },
+        "y": {
+            "field": "gdp_billion",
+            "type": "quantitative",
+            "title": "Gross Domestic Product (GDP) in Billion's",
+            "axis": {"tickCount": 7},
+            "scale": {"type": "log", "domain": [0.01, 100000]}
+        }
+    },
+    "layer": [
+        {
+            "mark": "circle",
+            "encoding": {
+                "size": {
+                    "field": "population",
+                    "type": "quantitative",
+                    "scale": {
+                        "rangeMax": 1000,
+                        "type": "log",
+                        "domain": [10000, 10000000000]
+                    }
+                },
+                "tooltip": [
+                  {"field": "country", "type": "nominal"},
+                  {"field": "co2_per_capita", "type": "quantitative"},
+                  {"field": "gdp", "type": "ordinal"},
+                  {"field": "population", "type": "ordinal"},
+                  {"field": "year", "type": "ordinal"}
+                ],
+                "opacity": {
+                    "value": 0.3
+                }
+            }
+        }
+    ]
+  }

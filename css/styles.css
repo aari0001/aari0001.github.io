@@ -1,0 +1,11 @@
+#space1 {
+	height: 100px;
+	width: 80px;
+}
+
+#world_map {
+	top: 20px;
+	bottom: 20px;
+	left: 40px;
+	right: 20px;
+}

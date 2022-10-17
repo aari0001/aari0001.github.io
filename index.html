@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+    <script type="text/javascript">
+        var data_location = "data/owid-co2-data.csv"
+
+        var gdp_pop = "js/gdp_pop.vg.json"
+        var rank = "js/rank.vg.json"
+        var world_map = "js/world_map.vg.json"
+
+        vegaEmbed('#gdp_pop', gdp_pop).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#rank', rank).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#world_map', world_map).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    </script>
+
+    <title>Green Emissions in the World</title>
+</head>
+
+<body>
+    <h1>Green Emissions in the World</h1>
+    <div id="rank">
+    </div>
+    <div id="world_map">
+    </div>
+    <div id="space1"></div>
+    <div id="gdp_pop">
+    </div>
+</body>
+
+</html>
